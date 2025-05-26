@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TabelaComponent } from "./components/tabela/tabela.component";
 
 @Component({
   selector: 'app-root',

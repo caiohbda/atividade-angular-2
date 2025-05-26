@@ -1,0 +1,26 @@
+<div class="tabela-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Usuários</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of ListaUser; track user.nome) {
+          <tr>
+            <td [ngStyle]="{ color: user.status ? 'inherit' : color }" [ngClass]="{'aplicado': usuarioComDetalhes ===  user.nome}">
+              <p>{{ user.nome }}</p>
+  
+              @if (usuarioComDetalhes === user.nome) {
+                <p>{{ user.idade }}</p>
+              }
+  
+              <button (click)="mostrarDetalhes(user.nome)">
+                {{ usuarioComDetalhes === user.nome ? 'Esconder Detalhes' : 'Mostrar Detalhes' }}
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>

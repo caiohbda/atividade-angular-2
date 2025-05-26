@@ -1,0 +1,34 @@
+.tabela-container {
+    margin: 20px auto;
+    max-width: 600px;
+   
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+      }
+      
+      th {
+        background-color: #007bff;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+      
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .aplicado{
+        background-color: #965656;
+      }
+  }
+  
+
+  
+  
