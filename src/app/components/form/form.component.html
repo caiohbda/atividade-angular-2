@@ -1,0 +1,14 @@
+<div class="form-container">
+  <h3>Adicionar novo usuário</h3>
+  <label>
+    Nome:
+    <input [(ngModel)]="novoUsuario.nome" />
+  </label>
+  <br />
+  <label>
+    Idade:
+    <input type="text" [(ngModel)]="novoUsuario.idade" />
+  </label>
+  <br />
+  <button (click)="adicionarUsuario()">Adicionar</button>
+</div>

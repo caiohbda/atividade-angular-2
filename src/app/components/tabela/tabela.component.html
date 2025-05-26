@@ -1,26 +1,32 @@
 <div class="tabela-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Usuários</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (user of ListaUser; track user.nome) {
-          <tr>
-            <td [ngStyle]="{ color: user.status ? 'inherit' : color }" [ngClass]="{'aplicado': usuarioComDetalhes ===  user.nome}">
-              <p>{{ user.nome }}</p>
-  
-              @if (usuarioComDetalhes === user.nome) {
-                <p>{{ user.idade }}</p>
-              }
-  
-              <button (click)="mostrarDetalhes(user.nome)">
-                {{ usuarioComDetalhes === user.nome ? 'Esconder Detalhes' : 'Mostrar Detalhes' }}
-              </button>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
-  </div>
+  <app-form (adicionar)="adicionarUsuario($event)"></app-form>
+  <table>
+    <thead>
+      <tr>
+        <th>Usuários</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of ListaUser; track user.nome; let i = $index) {
+      <tr>
+        <td [ngStyle]="{ color: user.status ? 'inherit' : color }" [ngClass]="{'aplicado': usuarioComDetalhes === user.nome}">
+          <p>{{ user.nome }}</p>
+          @if (usuarioComDetalhes === user.nome) {
+          <p>{{ user.idade }}</p>
+          }
+          <button (click)="mostrarDetalhes(user.nome)">
+            {{ usuarioComDetalhes === user.nome ? 'Esconder Detalhes' : 'Mostrar Detalhes' }}
+          </button>
+        </td>
+        <td>
+          <button (click)="atualizarStatus(i)">
+            {{ user.status ? 'Desativar' : 'Ativar' }}
+          </button>
+          <button (click)="removerUsuario(i)">Remover</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

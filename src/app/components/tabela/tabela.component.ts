@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormComponent } from "../form/form.component";
+import { FormsModule } from '@angular/forms';
 
 interface User {
   nome: string;
@@ -9,40 +11,36 @@ interface User {
 
 @Component({
   selector: 'app-tabela',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, FormComponent, FormsModule],
   templateUrl: './tabela.component.html',
   styleUrls: ['./tabela.component.scss']
 })
 export class TabelaComponent {
-
   color = "red";
-
   usuarioComDetalhes: string | null = null;
 
-  ListaUser: User[] = [
-    {
-      nome: "Caua",
-      idade: "12",
-      status: true
-    },
-    {
-      nome: "Pedro",
-      idade: "13",
-      status: false
-    },
-    {
-      nome: "Gabriel",
-      idade: "14",
-      status: true
-    }
-  ];
+  ListaUser: User[] = [];
 
   mostrarDetalhes(nome: string) {
     if (this.usuarioComDetalhes === nome) {
       this.usuarioComDetalhes = null;
     } else {
-      this.usuarioComDetalhes = nome; 
+      this.usuarioComDetalhes = nome;
     }
   }
 
+  atualizarStatus(index: number) {
+    this.ListaUser[index].status = !this.ListaUser[index].status;
+  }
+
+  adicionarUsuario(user: User) {
+    if (user.nome && user.idade) {
+      this.ListaUser.push(user);
+    }
+  }
+
+  removerUsuario(index: number) {
+    this.ListaUser.splice(index, 1);
+  }
 }
