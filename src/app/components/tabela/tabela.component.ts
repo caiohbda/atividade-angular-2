@@ -30,14 +30,14 @@ export class TabelaComponent {
     }
   }
 
-  atualizarStatus(index: number) {
-    this.ListaUser[index].status = !this.ListaUser[index].status;
-  }
-
   adicionarUsuario(user: User) {
     if (user.nome && user.idade) {
       this.ListaUser.push(user);
     }
+  }
+  
+  atualizarStatus(index: number) {
+    this.ListaUser[index].status = !this.ListaUser[index].status;
   }
 
   removerUsuario(index: number) {
